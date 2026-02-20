@@ -4,32 +4,43 @@ import catImg from './assets/cat.png'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+const names = ["Chappurr Roan", "Fearl Werewolf", "Big Papa Huge Time", "Catthew", "Dave the Magical Cheese Wizard"]
+
+function SillyCat() {
+  return (
+    <img src={catImg} className="logo" alt="Silly Cat" />
+  );
+}
+
+function PickName() {
+  let index = Math.floor(Math.random() * names.length);
+
+  return (
+    <h1 style={{color: names[index].length % 2 === 0 ? "#87FFD9" : "#870200"}}>This is quite the silly cat. Their name is {names[index]}</h1>
+  );
+}
+
+function PetButton() {
+  const listNames = names.map(name => 
+    <li>{name}</li>
+  );
+  return (
+    <div>
+      <p>Here is a list of all the possible names:</p>
+      <ul>{listNames}</ul>
+    </div>
+  );
+}
+
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={catImg} className="logo" alt="Silly Cat" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <p>Wow, just look at that logo spin!</p>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <SillyCat />
+      <PickName />
+      <PetButton />
+
     </>
   )
 }
